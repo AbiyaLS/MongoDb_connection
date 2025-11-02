@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
+import userRoutes from "../Express_MongoDb/routes/userRoutes.js"
 
 const app = express()
 
@@ -9,6 +10,8 @@ dotenv.config()
 
 const PORT = process.env.PORT || 5000
 const MONGOURL = process.env.MONGO_URL
+
+app.use("/users",userRoutes)
 
 mongoose.connect(MONGOURL).then(()=>{
     console.log("DataBase connect successfully")
